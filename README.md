@@ -1,3 +1,4 @@
+# Im wanna found a co-developer for NeoLinux Project
 # NeoLinux
 
 **Минималистичный TUI-десктоп на базе Debian**
