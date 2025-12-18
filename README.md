@@ -30,6 +30,6 @@ NeoLinux — это кастомная надстройка над минима�
 1. Установи минимальную Debian 13 (netinstall или server ISO)
 2. Скачай и запусти установочный скрипт:
    ```bash
-   wget https://raw.githubusercontent.com/ТВОЙ_НИК/NeoLinux/main/install_neolinux.sh
+   wget https://raw.githubusercontent.com/shad1k2/NeoLinux/main/install_neolinux.sh
    chmod +x install_neolinux.sh
    ./install_neolinux.sh
