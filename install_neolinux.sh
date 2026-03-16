@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# NeoLinux installer script v1.0
-# Запускать на минимальной Debian 13 (root или с sudo)
-
-set -e  # Остановка при ошибке
+set -e 
 
 echo "========================================"
 echo "   Установка NeoLinux v1.0"
@@ -11,33 +8,20 @@ echo "   Минимальный TUI-десктоп на Debian"
 echo "========================================"
 echo
 
-# Проверка root-прав
 if [ "$EUID" -ne 0 ]; then
     echo "Ошибка: Запускайте от root или с sudo"
     exit 1
 fi
 
-# Обновление системы
 echo "Обновление системы..."
 apt update && apt upgrade -y
 
-# Установка необходимых пакетов
 echo "Установка пакетов..."
 apt install -y tmux mc ranger htop fastfetch dialog w3m w3m-img links2 nmtui firefox-esr xorg doas git curl
 
-# Настройка doas вместо sudo
 echo "Настройка doas..."
 echo "permit persist :wheel" > /etc/doas.conf
-# Удаляем sudo (опционально, можно оставить)
-# apt remove sudo -y
 
-# Создание пользователя (если нужно, но обычно уже есть)
-# read -p "Имя пользователя: " username
-# adduser $username
-# usermod -aG wheel $username
-
-# Копирование файлов NeoLinux в домашнюю директорию первого обычного пользователя
-# Находим первого пользователя с UID >= 1000
 USER_HOME=$(getent passwd {1000..60000} | cut -d: -f6 | head -1)
 if [ -z "$USER_HOME" ]; then
     echo "Ошибка: Не найден обычный пользователь. Создайте его вручную."
